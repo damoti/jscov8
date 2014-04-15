@@ -1,0 +1,16 @@
+language: python
+python:
+  - 2.7
+
+install:
+  - sudo apt-get install libboost-python-dev libboost-thread-dev libboost-system-dev
+  - sudo apt-get install systemtap-sdt-dev
+  - svn checkout http://pyv8.googlecode.com/svn/trunk/ pyv8
+  - pip install -e pyv8
+  - pip install -e .
+
+script:
+    - py.test --cov jscov8 -s
+
+after_success:
+  - coveralls
