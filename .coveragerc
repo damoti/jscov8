@@ -1,0 +1,3 @@
+[run]
+omit =
+    pyv8/*
