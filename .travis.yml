@@ -8,6 +8,7 @@ install:
   - svn checkout http://pyv8.googlecode.com/svn/trunk/ pyv8
   - pip install -e pyv8
   - pip install -e .
+  - pip install -r requirements.pip
 
 script:
     - py.test --cov jscov8 -s
