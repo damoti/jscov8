@@ -1,4 +1,4 @@
-import PyV8
+import v8
 
 class JSWalker(object):
 
@@ -10,7 +10,7 @@ class JSWalker(object):
         return self._positions
 
     def __enter__(self):
-        self.ctxt = PyV8.JSContext()
+        self.ctxt = v8.JSContext()
         self.ctxt.enter()
         return self
 
@@ -22,7 +22,7 @@ class JSWalker(object):
             self._positions.append(pos)
 
     def run(self, script):
-        PyV8.JSEngine().compile(script).visit(self)
+        v8.JSEngine().compile(script).visit(self)
 
     def onProgram(self, prog):
         prog.visit(self)
@@ -149,7 +149,7 @@ class JSWalker(object):
         raise NotImplementedError()
 
     def onObjectLiteral(self, node):
-        # TODO: Bug in PyV8 prevents accessing node.properties.
+        # TODO: Bug in v8 prevents accessing node.properties.
         pass
 
     def onArrayLiteral(self, node):
